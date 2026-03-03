@@ -1,0 +1,32 @@
+% TODO: Turn this into a custom document class: 'assignment'
+
+\usepackage{amssymb}
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\powerset}{\mathcal{P}}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+\newcounter{problem}
+\setcounter{problem}{0}
+\newcommand{\problem}[1][]{\noindent\textbf{Problem \refstepcounter{problem}\theproblem: #1} }
+
+\newcommand{\AND}{\text{ and }}
+
+\usepackage{color}
+\newcommand{\TODO}{{\color{red}\textbf{TODO}}}
+
+\renewcommand{\frak}[1]{\mathfrak{#1}}  % I renew this command so I don't get a bs warning about \frak being obsolete >:[
+\newcommand{\ideal}{\trianglelefteq}
+\newcommand{\nilradical}{\frak{N}}
+\newcommand{\jacobsonradical}{\frak{R}}
+
+\author{Matthew R Aharonian}

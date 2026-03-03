@@ -1,0 +1,39 @@
+\problem Let $x$ be a nilpotent element of a ring $A$. Show that $1 + x$ is a unit of $A$.
+Deduce that the sum of a nilpotent element and a unit is a unit.
+
+\begin{proof}
+    Let $x \in A$ be nilpotent.
+    Then, $x \in \nilradical \subset \jacobsonradical$, so for all $y \in A$, $1- xy$ is a unit in $A$.
+    In particular, $1 + x = 1 - x(-1)$ is a unit in $A$, as claimed.
+
+    Let now $y$ be a unit of $A$.
+    Then, $x + y = y(y^{-1}x + 1)$.
+    As $x \in \nilradical$, $y^{-1}x \in \nilradical$ so that by the above, $y^{-1}x + 1$ is a unit in $A$.
+    It follows that as a product of units in $A$, $x + y$ is also a unit in $A$.
+\end{proof}
+
+\setcounter{problem}{5}
+
+\problem A ring $A$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (that is, an element $e$ such that $e^2 = e \not= 0$). Prove that the nilradical and Jacobson radical of $A$ are equal.
+\begin{proof}
+    The Jacobson radical $\jacobsonradical$ of $A$ is an ideal of $A$ containing $\nilradical$.
+    If the containment were proper, then by assumption, there is a nonzero element $e \in \jacobsonradical$ such that $e^2 = e$.
+    Then, $e(e-1) = 0$ so that $e$ is a unit.
+    But, this means that every maximal ideal of $A$ contains a unit so that $\jacobsonradical = \varnothing$, a contradiction!
+\end{proof}
+
+\problem Let $A$ be a ring in which every element $x$ satisfies $x^n = x$ for some $n > 1$ (depending on $x$).
+Show that every prime ideal in $A$ is maximal.
+
+\begin{proof}
+    Let $\frak{p} \ideal A$ be prime.
+    We will show that the ring $A/\frak{p}$ is a field.
+    Indeed, as $\frak{p}$ is prime, $A/\frak{p}$ is already an integral domain.
+    Thus, it suffices to show that every nonzero $x + \frak{p}$ in $A/\frak{p}$ is invertible.
+    To this end, let $x + \frak{p} \in A/\frak{p}$, not zero, be arbitrary.
+    By assumption, there is an integer $n > 1$ so that $x^n = x$, or $x(x^{n-1} - 1) = 0$.
+    Hence, $(x + \frak{p})(x^{n-1} -1  + \frak{p}) = \frak{p}$.
+    Since $x + \frak{p}$ is not zero and $A/\frak{p}$ is an ID, it follows that $x^{n-1} - 1 + \frak{p} = \frak{p}$.
+    Hence, $x^{n-1} + \frak{p} = 1 + \frak{p}$ so that $x + \frak{p}$ is a invertible.
+    It follows that $A/\frak{p}$ is a field, whence $\frak{p} \ideal A$ is maximal.
+\end{proof}
