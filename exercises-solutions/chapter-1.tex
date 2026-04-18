@@ -18,8 +18,8 @@ Deduce that the sum of a nilpotent element and a unit is a unit.
 \begin{proof}
     The Jacobson radical $\jacobsonradical$ of $A$ is an ideal of $A$ containing $\nilradical$.
     If the containment were proper, then by assumption, there is a nonzero element $e \in \jacobsonradical$ such that $e^2 = e$.
-    Then, $e(e-1) = 0$ so that $e$ is a unit.
-    But, this means that every maximal ideal of $A$ contains a unit so that $\jacobsonradical = \varnothing$, a contradiction!
+    Then, $e(e-1) = 0$. But, $e$ being in $\jacobsonradical$ means that $e-1$ is a unit in $A$, whence $e(e-1) = 0$ implies $e = 0$.
+    Contradiction!
 \end{proof}
 
 \problem Let $A$ be a ring in which every element $x$ satisfies $x^n = x$ for some $n > 1$ (depending on $x$).
@@ -36,4 +36,24 @@ Show that every prime ideal in $A$ is maximal.
     Since $x + \frak{p}$ is not zero and $A/\frak{p}$ is an ID, it follows that $x^{n-1} - 1 + \frak{p} = \frak{p}$.
     Hence, $x^{n-1} + \frak{p} = 1 + \frak{p}$ so that $x + \frak{p}$ is a invertible.
     It follows that $A/\frak{p}$ is a field, whence $\frak{p} \ideal A$ is maximal.
+\end{proof}
+
+\problem Let $A$ be a ring $\not=\zero$. Show that the set of prime ideals of $A$ has minimal elements with respect to inclusion.
+\begin{proof}
+    Let $\Sigma$ be the set of prime ideals of $A$ ordered by inclusion.
+    We will use Zorn's Lemma to show that every chain in $\Sigma$ has a lower bound, whence $\Sigma$ has a minimal element.
+    Indeed, $\Sigma$ is nonempty since (by Zorn's Lemma) $A$ contains a maximal ideal.
+    Let now $\{\frak{p}_\iota\}_{\iota \in I}$ be a chain in $\Sigma$ indexed by the set $I$ and let $\frak{p} = \bigcap_{\iota \in I} \frak{p}_\iota$.
+    We claim that $\frak{p} \in \Sigma$.
+    First, that $\frak{p}$ is an ideal of $A$ follows from $\frak{p}$ being an intersection of ideals.
+    To show that $\frak{p}$ is prime, let $xy \in \frak{p}$ be arbitrary.
+    Then, $xy \in \frak{p}_\iota$ for all $\iota \in I$.
+    Suppose that $x\notin \frak{p}$ and $y \notin \frak{p}$.
+    Then there are indices $\alpha, \beta \in I$ such that $x \notin \frak{p}_\alpha$ and $y\notin \frak{p}_\beta$.
+    Since $\{\frak{p}_\iota\}$ is a chain, either $\frak{p}_\alpha \subseteq \frak{p}_\beta$ or $\frak{p}_\beta \subseteq \frak{p}_\alpha$.
+    In either case, the smaller ideal contains neither $x$ nor $y$, but does contain $xy$. Contradiction!
+    Thus, either $x\in \frak{p}$ or $y \in \frak{p}$. Hence, $\frak{p} \in \Sigma$.
+
+    Of course, $\frak{p} \subseteq \frak{p}_\iota$ for every $\iota \in I$ so that $\frak{p}$ is a lower bound for $\{\frak{p}_\iota\}$.
+    It follows by Zorn's Lemma that $\Sigma$ contains a minimal element, as claimed.
 \end{proof}
