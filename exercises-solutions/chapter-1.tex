@@ -12,6 +12,62 @@ Deduce that the sum of a nilpotent element and a unit is a unit.
     It follows that as a product of units in $A$, $x + y$ is also a unit in $A$.
 \end{proof}
 
+\problem Let $f = a_0 + a_1x + \cdots + a_nx^n \in A[X]$. Prove that:
+\begin{enumerate}[i)]
+    \item $f$ is a unit in $A[X] \Leftrightarrow a_0$ is a unit in $A$ and $a_1,\dots, a_n$ are nilpotent.
+        \begin{proof}
+            If $a_0$ is a unit and $a_1,\cdots, a_n$ are nilpotent, then $a_1x + \cdots + a_nx^n$ is nilpotent.
+            Hence, $f = a_0 + (a_1x + \cdots + a_nx^n)$ is the sum of a unit and a nilpotent element, so $f$ is a unit.
+
+            Conversely, suppose $f$ is a unit and let $g = b_0 + \cdots + b_mx^m$ be the inverse of $f$.
+            We'll show by induction on $r$ that $a_n^{r+1}b_{m-r} = 0$ from which the proof will follow.
+            First, put $$c_k = \sum_{i+j = k}a_ib_j \hspace{1cm}(k = 1, \cdots, m+n)$$
+            so \[
+                fg = \sum_{i=0}^{m+n}c_ix^i.
+            \]
+            Since $fg = 1$, it follows that each $c_i = 0$ for $i > 0$ and that $c_0 = a_0b_0 = 1$.
+            In particular, $a_0$ is a unit and if $r = 0$, then $a_n^{r+1}b_{m-r} = a_nb_m = c_{m+n} = 0$. 
+            Suppose now that $a_n^{s+1}b_{m-s} = 0$ for all $1 \leq s < r$.
+            By induction, \[
+                a_n^rg = a_n^r(b_0 + \cdots + b_mx^m) = a_n^rb_0 + \cdots + a_n^rb_{m-r}
+            \]
+            so \[
+                a_n^{r+1} = a_n^{r+1}fg = a_nfa_n^rg = a_n\sum_{i=0}^{n+(m-r)}(\sum_{j+k = i}a_ja_n^rb_k)x = a_0a_n^rb_0 + \cdots + a_na_n^rb_{m-r}x^{n+m-r},
+            \]
+            whence $a_n^{r+1}b_{m-r} = 0$.
+            Thus, $a_n^{m+1}b_0 = 0$, so since $b_0$ is a unit, $a_n$ is nilpotent.
+
+            It follows that $f - a_nx^n = a_0 + \cdots + a_{n-1}x^{n-1}$ is the sum of a unit and a nilpotent element, hence a unit.
+            Thus, $a_{n-1}$ is nilpotent, and applying this argument recursively, we get that $a_n, \cdots, a_1$ are nilpotent.
+        \end{proof}
+
+        \begin{proof}[Alternative Proof]
+            Note that when $A$ is an integral domain, $f$ being a unit means that $a_0$ is a unit and that $a_1, \cdots, a_n = 0$.
+            Let $\mathfrak{p}$ be a prime ideal of $A$ and consider the image $\tilde{f}$ of $f$ under the map $A[x] \to A/\mathfrak{p}[x]$.
+            One can easily verify that this map is a ring homomorphism and so $\tilde{f}$ is a unit in $A/\frak{p}[x]$.
+            Since $\frak{p}$ is prime, $A/\frak{p}$ is an integral domain and by the above remark, $a_1, \cdots, a_n \equiv 0 \mod \frak p$.
+            Hence, $a_1, \cdots, a_n \in \frak p$.
+            Since $\frak p$ was an arbitrary prime ideal, it follows that $a_1, \cdots, a_n \in \bigcap_{\frak p}\frak p = \nilradical$.
+            That $a_0$ is a unit follows from it being the constant term of $f$.
+        \end{proof}
+        
+        \item $f$ is nilpotent $\Leftrightarrow$ $a_0, a_1, \cdots, a_n$ are nilpotent.
+            \begin{proof}
+                If $a_0, \cdots, a_n$ are nilpotent, then $f$ is a sum of nilpotents, hence is nilpotent.
+                If $f$ is nilpotent, then $xf$ is nilpotent. Hence, $1 + xf = 1 + a_0x + \cdots + a_nx^{n+1}$ is a unit.
+                It follows from (i) that $a_0, \cdots, a_n$ are nilpotent.
+            \end{proof}
+\end{enumerate}
+
+\setcounter{problem}{3}
+\problem In the ring $A[x]$, the Jacobson radical is equal to the nilradical.
+\begin{proof}
+    Since every maximal ideal is prime, $\nilradical \subset \jacobsonradical$.
+    Given $f = a_0 + \cdots + a_nx^n \in \jacobsonradical$, we know that $1-yf$ is a unit for all $y \in A[x]$.
+    In particular, $1 + xf = 1 + a_0x + \cdots + a_{n}x^{n+1}$ is a unit, so by 2(i), every $a_i$ is nilpotent.
+    Then, by 2(ii), $f$ is nilpotent.
+\end{proof}
+
 \setcounter{problem}{5}
 
 \problem A ring $A$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (that is, an element $e$ such that $e^2 = e \not= 0$). Prove that the nilradical and Jacobson radical of $A$ are equal.
